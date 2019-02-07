@@ -8,37 +8,49 @@
 
 namespace App\Controller;
 
+use App\Service\SimpleConversation;
 use BotMan\BotMan\BotMan;
 use BotMan\BotMan\BotManFactory;
+use BotMan\BotMan\Cache\SymfonyCache;
 use BotMan\BotMan\Drivers\DriverManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BotManController extends AbstractController
 {
     /**
      * @Route("/", name="botMan")
+     * @param Request $request
+     * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $config = [
             'facebook' => [
-                'token' => 'EAAIoZCLiJgxQBAJI7MPTTcavPR7Oo2ZAbyJ2J2tFjcHBWpovW12UOPBz0cANzuh8zV8mEok78He7gxzwLOEMlELBYbOzPhYjSs8gEri5MPNXISDPieTk8t9KvIQOvOL4Q34SdNbI8IWebw87kQiAfvPuY2ZAL9ZBZCZBZCksxwrCQZDZD',
+                'token' => 'EAAIoZCLiJgxQBABPtai2yRjY9kHOzBDEFxUt8rAhK3SLBqbh1TIIWykbd1lcarBV6i4Ogg9lqJgeZCLEtCiTdriTiZCVrT5yxZCq9bXf0LE3KQLk936121Rxr7wxC76x2qZAZBzoyItCVaZCHLZBwGu2oscUvjjYErKwjzSqD6eBJwZDZD',
                 'app_secret' => 'a8721b65f98c3765568c47b87701b01e',
-                'verification'=>'Qwerqwer1@',
+                'verification'=>'1232342143grfgdffhtygfgfdgdetgh442454523',
             ]
         ];
 
         DriverManager::loadDriver(\BotMan\Drivers\Facebook\FacebookDriver::class);
 
-        $botMan = BotManFactory::create($config);
+        $adapter = new FilesystemAdapter();
+        $botMan = BotManFactory::create($config, new SymfonyCache($adapter));
 
-        $botMan->hears('hello', function (BotMan $bot) {
-            $bot->reply('Hello yourself.');
+        $botMan->fallback(function(BotMan $bot) {
+            $user = $bot->getUser();
+            $bot->typesAndWaits(1);
+            $bot->reply("Cześć {$user->getFirstName()}!");
+            $bot->typesAndWaits(1);
+            $bot->startConversation(new SimpleConversation());
         });
 
         $botMan->listen();
-
+        return new Response();
     }
 
 
