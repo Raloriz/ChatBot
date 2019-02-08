@@ -30,7 +30,7 @@ class ChatBotController extends AbstractController
     {
         $config = [
             'facebook' => [
-                'token' => 'EAAIoZCLiJgxQBAPw7VxOR78Cqu23ZBun1H93LxgtJdsrS3vcDCZBALpBy3HiZALilQIhGZAybwszqjQHsLRjepchbxE0Y0nEdCXZAEc8mLJJWs2Gewiwlv0gKt8nQt2ewZBp46PVokZA1ls6ZCZBEDrOH1QOuWbuoD8EQnvlyxlAw5TQZDZD',
+                'token' => 'EAAIoZCLiJgxQBAIppXXZAiy4RwTYkzyU73aCYZA2hDyhbpwHDuG9IOZCBQ58NJSQ4YiJ0vBPFylJfHNHySeTZBvsFuzEkh5lnCJwl1oClHtcfkT2lV1UnV2jy1843VHhYaOMFdOSbbhhnqX1NVizrZC7ZBLaUG2P1Y38R1avmrORAZDZD',
                 'app_secret' => 'a8721b65f98c3765568c47b87701b01e',
                 'verification'=>'1232342143grfgdffhtygfgfdgdetgh442454523',
             ]

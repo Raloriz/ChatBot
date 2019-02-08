@@ -19,7 +19,7 @@ class SimpleConversation extends Conversation
     /** @var int */
     const MINIMAL_AGE = 13;
     /** @var int */
-    const MAXIMUM_AGE = 100;
+    const MAXIMUM_AGE = 120;
 
     /** @var int */
     protected $age;
@@ -28,6 +28,7 @@ class SimpleConversation extends Conversation
     {
         $this->ask('Ile masz lat?', function (Answer $answer) {
             $this->setAge($answer->getText());
+            $this->say($this->age);
             $this->ageVerification();
         });
     }
@@ -93,7 +94,7 @@ class SimpleConversation extends Conversation
     /**
      * @param string $age
      */
-    public function setAge(string $age): void
+    public function setAge($age): void
     {
         $this->age = floor(str_replace(',', '.', $age));
     }
