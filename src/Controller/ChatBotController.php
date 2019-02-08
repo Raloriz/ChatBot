@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class BotManController extends AbstractController
+class ChatBotController extends AbstractController
 {
     /**
      * @param Request $request
@@ -30,7 +30,7 @@ class BotManController extends AbstractController
     {
         $config = [
             'facebook' => [
-                'token' => 'EAAIoZCLiJgxQBABPtai2yRjY9kHOzBDEFxUt8rAhK3SLBqbh1TIIWykbd1lcarBV6i4Ogg9lqJgeZCLEtCiTdriTiZCVrT5yxZCq9bXf0LE3KQLk936121Rxr7wxC76x2qZAZBzoyItCVaZCHLZBwGu2oscUvjjYErKwjzSqD6eBJwZDZD',
+                'token' => 'EAAIoZCLiJgxQBAPw7VxOR78Cqu23ZBun1H93LxgtJdsrS3vcDCZBALpBy3HiZALilQIhGZAybwszqjQHsLRjepchbxE0Y0nEdCXZAEc8mLJJWs2Gewiwlv0gKt8nQt2ewZBp46PVokZA1ls6ZCZBEDrOH1QOuWbuoD8EQnvlyxlAw5TQZDZD',
                 'app_secret' => 'a8721b65f98c3765568c47b87701b01e',
                 'verification'=>'1232342143grfgdffhtygfgfdgdetgh442454523',
             ]

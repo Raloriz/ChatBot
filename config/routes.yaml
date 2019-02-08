@@ -1,3 +1,3 @@
 #index:
 #    path: /
-#    controller: App\Controller\BotManController::index
+#    controller: App\Controller\ChatBoxController::index

@@ -16,21 +16,23 @@ use BotMan\BotMan\Messages\Outgoing\Question;
 
 class SimpleConversation extends Conversation
 {
+    /** @var int */
     const MINIMAL_AGE = 13;
+    /** @var int */
     const MAXIMUM_AGE = 100;
 
     /** @var int */
     protected $age;
 
-    public function askForAge()
+    public function askForAge(): void
     {
         $this->ask('Ile masz lat?', function (Answer $answer) {
-            $this->age = (int) $answer->getText();
+            $this->setAge($answer->getText());
             $this->ageVerification();
         });
     }
 
-    private function ageVerification()
+    private function ageVerification(): void
     {
         if ($this->isInRange()) {
             $birthYear = $this->calculateTheBirthYear();
@@ -83,8 +85,16 @@ class SimpleConversation extends Conversation
     /**
      * @return mixed|void
      */
-    public function run()
+    public function run(): void
     {
         $this->askForAge();
+    }
+
+    /**
+     * @param string $age
+     */
+    public function setAge(string $age): void
+    {
+        $this->age = floor(str_replace(',', '.', $age));
     }
 }
