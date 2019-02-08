@@ -22,9 +22,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class BotManController extends AbstractController
 {
     /**
-     * @Route("/", name="botMan")
      * @param Request $request
      * @return Response
+     * @Route("/", name="botMan")
      */
     public function index(Request $request)
     {
